@@ -31,6 +31,7 @@
       </ul>
     </li>
     <!-- <li><a href="#licença">Licença</a></li> -->
+    <li><a href="#estrutura-do-projeto">Estrutura do Projeto<a></li>
     <li><a href="#equipe">Equipe</a></li>
   </ol>
 </details>
@@ -97,8 +98,30 @@ Distribuído sob a Licença MIT. Veja `LICENSE.txt` para mais informações.
 
 <p align="right">(<a href="#readme-top">voltar ao topo</a>)</p> -->
 
-<!-- EQUIPE -->
+## Estrutura do Projeto
 
+Aplicação React com Vite, com Tailwind CSS e `shadcn/ui`.
+
+### 📂 Visão Geral dos Diretórios (`src/`)
+
+- **`components/`**
+  - **`Calculator/`**
+    - `Calculator.jsx`: Renderiza a Display e o Keyboard. Envolve a UI com `Card` do shadcn.
+    - `Display.jsx`: Controla como as contas e totais aparecem, formatando números muito longos.
+    - `Keyboard.jsx`: Organiza os botões em formato grid e repassa eventos de clique.
+  - **`ui/`** (`shadcn`)
+    - `button.jsx`
+    - `card.jsx`
+
+- **`context/`**
+  - `AuthContext.jsx`: Rastreador de Login da aplicação temporária.
+
+- **`hooks/`** (Complexidades encapsuladas)
+  - `useCalculator.js`: Gerencia dados de operadores, strings atuais de display, lógicas para soma/divisão/negativos/resets, e as decisões de roteamento.
+
+  <p align="right">(<a href="#readme-top">voltar ao topo</a>)</p>
+
+<!-- EQUIPE -->
 ## Equipe
 
 **Alunos:**
