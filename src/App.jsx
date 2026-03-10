@@ -1,10 +1,17 @@
 import { Outlet } from "react-router-dom";
+import Header from "./components/Header";
+import { useAuth } from "./context/AuthContext";
 
 function App() {
+  const { user } = useAuth();
+
   return (
-    <main>
-      <Outlet />
-    </main>
+    <>
+      <Header />
+      <main className={user ? "pt-14" : ""}>
+        <Outlet />
+      </main>
+    </>
   );
 }
 
