@@ -42,6 +42,7 @@ export const useCalculator = () => {
   const calculate = (prev, current, op) => {
     if (op === "/" && current === 0) {
       // Condicional pra mandar pro login
+      sessionStorage.setItem("vault_unlocked", "true");
       navigate("/login");
       return "Error";
     }

@@ -1,6 +1,6 @@
 import { useCalculator } from "../../hooks/useCalculator";
-import Display from "./Display";
-import Keyboard from "./Keyboard";
+import Display from "../../components/Calculator/Display";
+import Keyboard from "../../components/Calculator/Keyboard";
 import { Card, CardContent } from "@/components/ui/card";
 
 const Calculator = () => {
