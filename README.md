@@ -42,6 +42,10 @@
 
 Projeto desenvolvido como trabalho final do curso de React oferecido pelo CEPEDI ao IFMG campus Bambui. O objetivo é aplicar os conhecimentos adquiridos durante o curso na construção de uma aplicação web utilizando React e Vite.
 
+### Tema
+
+O projeto é uma **calculadora funcional** com uma **rota secreta**: ao dividir por zero, o usuário é redirecionado para uma tela de login que dá acesso a um **dashboard fictício de controle do Jogo do Bicho**. O dashboard apresenta estatísticas de apostas, histórico, desempenho semanal e os "bichos" mais apostados — tudo com dados simulados para fins de demonstração acadêmica.
+
 <!-- CONSTRUIDO COM -->
 
 ### Construído com:
@@ -78,12 +82,21 @@ Ferramentas necessárias para rodar o projeto:
     ```sh
     npm install
     ```
-3. (Opcional) Se fizer fork, altere a URL remota para o seu repositório
+3. Crie o arquivo de variáveis de ambiente a partir do modelo
+    ```sh
+    cp .env.exemple .env.local
+    ```
+    Abra o `.env.local` e substitua os valores pelas suas credenciais do [Supabase](https://supabase.com):
+    ```env
+    VITE_SUPABASE_URL=https://seu-projeto.supabase.co
+    VITE_SUPABASE_PUBLISHABLE_KEY=sua-anon-key
+    ```
+4. (Opcional) Se fizer fork, altere a URL remota para o seu repositório
     ```sh
     git remote set-url origin git@github.com:seu_usuario/seu_repositorio.git
     git remote -v # confirme as alterações
     ```
-4. Rode o projeto localmente
+5. Rode o projeto localmente
     ```sh
     npm run dev
     ```
@@ -104,20 +117,41 @@ Aplicação React com Vite, com Tailwind CSS e `shadcn/ui`.
 
 ### 📂 Visão Geral dos Diretórios (`src/`)
 
+- **`assets/`** — Recursos estáticos (logo do projeto)
+  - `logo.svg`
+
 - **`components/`**
   - **`Calculator/`**
-    - `Calculator.jsx`: Renderiza a Display e o Keyboard. Envolve a UI com `Card` do shadcn.
-    - `Display.jsx`: Controla como as contas e totais aparecem, formatando números muito longos.
-    - `Keyboard.jsx`: Organiza os botões em formato grid e repassa eventos de clique.
-  - **`ui/`** (`shadcn`)
+    - `Display.jsx`: Exibe o valor atual e a operação em andamento, formatando números longos.
+    - `Keyboard.jsx`: Grid de botões da calculadora, repassa eventos de clique via props.
+  - `Header.jsx`: Navbar fixa com logo, links de navegação e ícone de perfil.
+  - `PrivateRoute.jsx`: Componente de rota protegida — redireciona para `/login` se não autenticado.
+  - **`ui/`** (shadcn/ui)
     - `button.jsx`
     - `card.jsx`
 
 - **`context/`**
-  - `AuthContext.jsx`: Rastreador de Login da aplicação temporária.
+  - `AuthContext.jsx`: Context API para gerenciamento global de autenticação (login, registro, logout, sessão).
 
-- **`hooks/`** (Complexidades encapsuladas)
-  - `useCalculator.js`: Gerencia dados de operadores, strings atuais de display, lógicas para soma/divisão/negativos/resets, e as decisões de roteamento.
+- **`hooks/`**
+  - `useCalculator.js`: Hook customizado com lógica da calculadora (operações, estado do display, roteamento secreto).
+
+- **`lib/`**
+  - `supabase.js`: Cliente Supabase configurado com variáveis de ambiente.
+  - `utils.js`: Utilitário `cn()` para merge de classes Tailwind.
+
+- **`pages/`**
+  - `calculator/index.jsx`: Página principal — calculadora funcional.
+  - `login/index.jsx`: Página de login/registro com `react-hook-form` e tema cyberpunk.
+  - `login/login.css`: Estilos da página de login (fontes Google, animações, scanlines).
+  - `dashboard/index.jsx`: Dashboard protegido com estatísticas do Jogo do Bicho.
+  - `dashboard/data.js`: Camada de dados — funções de fetch/insert no Supabase e lista de animais.
+  - `perfil/index.jsx`: Página de perfil do usuário (rota dinâmica `/perfil/:id`).
+
+- `App.jsx`: Layout raiz com Header e Outlet para rotas filhas.
+- `routes.jsx`: Configuração de rotas (estáticas, dinâmicas e privadas).
+- `main.jsx`: Ponto de entrada — AuthProvider + RouterProvider.
+- `index.css`: Estilos globais e variáveis CSS.
 
   <p align="right">(<a href="#readme-top">voltar ao topo</a>)</p>
 
@@ -126,9 +160,9 @@ Aplicação React com Vite, com Tailwind CSS e `shadcn/ui`.
 
 **Alunos:**
 
-- <img src="https://github.com/drgsantaana.png" width="30" style="border-radius: 50%;" /> [Daniel Santana](https://github.com/drgsantaana)
-- <img src="https://github.com/VictorRamos13.png" width="30" style="border-radius: 50%;" /> [Victor Hordones](https://github.com/VictorRamos13)
-- <img src="https://github.com/gbfllp.png" width="30" style="border-radius: 50%;" /> [Gabriel Fellipe](https://github.com/gbfllp)
+- <img src="https://github.com/drgsantaana.png" width="30" style="border-radius: 50%;" /> [Daniel Reis Gonçalves Sant'ana](https://github.com/drgsantaana)
+- <img src="https://github.com/VictorRamos13.png" width="30" style="border-radius: 50%;" /> [Victor Hordones Ramos](https://github.com/VictorRamos13)
+- <img src="https://github.com/gbfllp.png" width="30" style="border-radius: 50%;" /> [Gabriel Fellipe Corrêa Costa](https://github.com/gbfllp)
 
 **Professor e Orientador:**
 
