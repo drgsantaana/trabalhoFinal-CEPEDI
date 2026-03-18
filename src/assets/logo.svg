@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" fill="none">
+  <rect width="40" height="40" rx="10" fill="#1e293b"/>
+  <rect x="2" y="2" width="36" height="36" rx="8" stroke="#38bdf8" stroke-width="1.5" fill="none"/>
+  <text x="20" y="16" text-anchor="middle" font-family="monospace" font-size="9" font-weight="bold" fill="#38bdf8">JB</text>
+  <text x="20" y="27" text-anchor="middle" font-family="monospace" font-size="6" fill="#94a3b8">CALC</text>
+  <line x1="8" y1="30" x2="32" y2="30" stroke="#38bdf8" stroke-width="0.5" opacity="0.5"/>
+  <circle cx="12" cy="34" r="1.5" fill="#38bdf8" opacity="0.4"/>
+  <circle cx="20" cy="34" r="1.5" fill="#38bdf8" opacity="0.6"/>
+  <circle cx="28" cy="34" r="1.5" fill="#38bdf8" opacity="0.4"/>
+</svg>
